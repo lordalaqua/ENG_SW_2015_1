@@ -1,0 +1,11 @@
+<?php
+
+require __DIR__.'/../../vendor/autoload.php';
+require __DIR__.'/../../config/database.php'; 
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+Capsule::schema()->dropIfExists('apartments');
+Capsule::schema()->dropIfExists('reviews');
+
+echo "Tables Dropped.\n";
