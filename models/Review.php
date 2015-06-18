@@ -17,5 +17,10 @@ class Review extends Eloquent {
     {
         return $this->belongsToOne('Apartment', 'apartment_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('User', 'user_id');
+    }
     
 }

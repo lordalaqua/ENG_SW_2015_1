@@ -3,15 +3,12 @@ require '../vendor/autoload.php';
 require '../config/database.php';
 
 /* Instantiate Router */
-$router = new AltoRouter();
+$router = Router::instance();
 
-/* Declare all Route Mappings here */
+session_start();
 
-$router->map('GET','/suggestions','SuggestionController#index');
-$router->map('GET','/suggestions/[i:id]','SuggestionController#show');
-$router->map('GET','/suggestions/create','SuggestionController#create');
-$router->map('POST','/suggestions','SuggestionController#store');
-
+/* Setup Route Mappings */
+require 'routes.php';
 
 /* Match route mappings to Controller or Closure */
 $match = $router->match();

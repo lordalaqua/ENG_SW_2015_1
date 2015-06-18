@@ -10,15 +10,21 @@
         <header>
             <h1>Aluguel Universitário</h1>
             <nav>
-                <ul>
-                    <li><a href="/suggestions">Todas Sugestões</a></li>
-                    <li><a href="/suggestions/create">Nova Sugestão</a></li>
-                </ul>
+                <a href="/">[Home]</a>
+                <?php if(array_key_exists('user',$_SESSION)): ?>
+                    <?php echo $_SESSION['user']->name ?>
+                    <?php if($_SESSION['user']->is_admin): ?>
+                        (admin)
+                    <?php endif ?>        
+                    <a href='/logout'> [Sair] </a>
+                <?php else: ?>
+                    <a href='/login'> [Login] </a>
+                <?php endif ?>
             </nav>
         </header>
         <main>
-            <h2>Sugerir Apartamento</h2>
-            <form role="form" method="POST" action="/suggestions" id="form">
+            <h2>Criar Apartamento</h2>
+            <form role="form" method="POST" action=<?php echo '"/apartments/'.$apartment->id.'"'?> id="form">
 
             <h3>Informações do Apartamento</h3>
             <div class="form-element">
@@ -119,12 +125,8 @@
                 <label for="other_info">Informações Adicionais</label>
                 <textarea name="other_info" id="other_info"></textarea>
             </div>
-            <h3>Review</h3>
             <div class="form-element">
-                <textarea name="review" id="review"></textarea>
-            </div>
-            <div class="form-element">
-                <button type="submit"> Enviar Sugestão </button>
+                <button type="submit"> Criar Apartamento </button>
             </div>
             </form>
         </main>
