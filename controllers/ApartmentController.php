@@ -35,8 +35,6 @@ class ApartmentController {
         $apartment = Apartment::find($id);
         if($apartment)
             require __DIR__ . '/../views/ApartmentDetailView.php';
-        else
-            echo '<h1>Apartment Not found</h1>';
     }
 
     public function edit($id)
